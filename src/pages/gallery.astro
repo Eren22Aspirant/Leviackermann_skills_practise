@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const tattoos = [
+  { 
+    specialty: "Style 01 // Fine Line Minimalist", 
+    desc: "Single-needle micro icons, geometric celestial alignments, and ultra-crisp custom script typography.",
+    vector: `<svg viewBox="0 0 100 100" fill="none" stroke="#a3a3a3" stroke-width="1.5"><circle cx="50" cy="50" r="30"/><line x1="50" y1="10" x2="50" y2="90"/><line x1="10" y1="50" x2="90" y2="50"/><circle cx="50" cy="50" r="2" fill="#a3a3a3"/><path d="M35,35 L65,65 M35,65 L65,35" stroke-dasharray="2,2"/></svg>`
+  },
+  { 
+    specialty: "Style 02 // Dark Cyber-Surrealism", 
+    desc: "Dystopian organic textures, complex anatomy structures, and industrial tech aesthetics.",
+    vector: `<svg viewBox="0 0 100 100" fill="none" stroke="#a3a3a3" stroke-width="2"><path d="M20,30 Q50,90 80,30" /><path d="M30,40 Q50,10 70,40" /><line x1="50" y1="20" x2="50" y2="80"/><circle cx="50" cy="45" r="12"/></svg>`
+  },
+  { 
+    specialty: "Style 03 // Gothic Blackwork", 
+    desc: "Symmetrical abstract tribal linework, spike framing patterns, and solid high-contrast ink execution.",
+    vector: `<svg viewBox="0 0 100 100" fill="none" stroke="#a3a3a3" stroke-width="2"><path d="M50,10 L90,50 L50,90 L10,50 Z"/><path d="M50,25 L75,50 L50,75 L25,50 Z" stroke-dasharray="3,3"/><line x1="50" y1="10" x2="50" y2="90"/><line x1="10" y1="50" x2="90" y2="50"/></svg>`
+  },
+  { 
+    specialty: "Style 04 // Techwear Geometry", 
+    desc: "Digital matrix lines, microchip structural tracks, and precise placement gridwork.",
+    vector: `<svg viewBox="0 0 100 100" fill="none" stroke="#a3a3a3" stroke-width="1.5"><rect x="25" y="25" width="50" height="50" rx="5"/><path d="M15,50 L25,50 M75,50 L85,50 M50,15 L50,25 M50,75 L50,85"/><circle cx="15" cy="50" r="3" fill="#a3a3a3"/><circle cx="85" cy="50" r="3" fill="#a3a3a3"/><path d="M35,35 L65,65" stroke-width="3"/></svg>`
+  },
+  { 
+    specialty: "Style 05 // Botanical & Realism", 
+    desc: "Flowing organic elements, heavy black illustrative floral lines, and dynamic movement framing.",
+    vector: `<svg viewBox="0 0 100 100" fill="none" stroke="#a3a3a3" stroke-width="2"><path d="M50,90 C50,50 30,30 30,10 C50,40 70,50 50,90 Z"/><path d="M50,60 C65,45 60,35 55,20"/><path d="M50,75 C35,65 40,55 45,40"/></svg>`
+  },
+  { 
+    specialty: "Style 06 // Kinetic Silhouette", 
+    desc: "Abstract sweeping ink fields, motion typography accents, and heavy structural blackwork lines.",
+    vector: `<svg viewBox="0 0 100 100" fill="none" stroke="#a3a3a3" stroke-width="2.5"><path d="M10,80 C40,80 40,20 90,20" /><path d="M15,70 C45,70 45,30 85,30" stroke-width="1" stroke-dasharray="2,2"/><path d="M30,90 C50,60 50,40 70,10" /></svg>`
+  }
+];
+---
+
+<Layout title="Tattoo Specialties">
+  <style>
+    .gallery-header {
+      border-bottom: 1px solid #262626;
+      padding-bottom: 30px;
+      margin-bottom: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    @media (min-width: 768px) {
+      .gallery-header { flex-direction: row; align-items: flex-end; }
+    }
+    .gallery-header h1 {
+      font-size: 42px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+    .gallery-header span {
+      color: #737373;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    .booking-box {
+      background-color: #171717;
+      border: 1px solid #262626;
+      padding: 20px;
+      border-radius: 8px;
+      max-w: 400px;
+    }
+    .booking-btn {
+      display: block;
+      text-align: center;
+      background-color: #ffffff;
+      color: #000000;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 4px;
+      margin-top: 15px;
+      transition: background-color 0.2s;
+    }
+    .booking-btn:hover { background-color: #e5e5e5; }
+    
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .portfolio-card {
+      background-color: #111111;
+      border: 1px solid #222222;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s;
+    }
+    .portfolio-card:hover { border-color: #444444; }
+    
+    .art-frame {
+      width: 100%;
+      height: 320px;
+      background-color: #161616;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #222222;
+      padding: 40px;
+    }
+    .art-frame :global(svg) {
+      width: 100%;
+      height: 100%;
+      max-height: 220px;
+    }
+    .art-meta {
+      padding: 24px;
+    }
+    .art-style {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+    .art-desc {
+      color: #666666;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+  </style>
+
+  <div class="gallery-header">
+    <div>
+      <span>PRIVATE RESIDENCY</span>
+      <h1>ARTISTIC CAPABILITIES</h1>
+    </div>
+    
+    <div class="booking-box">
+      <p style="font-size: 13px; color: #a3a3a3; line-height: 1.4;">Custom projects require a dedicated visual consultation request. Deposits secure the date.</p>
+      <a href="https://square.site" target="_blank" class="booking-btn">Request Custom Booking ↗</a>
+    </div>
+  </div>
+
+  <div class="portfolio-grid">
+    {tattoos.map((item) => (
+      <div class="portfolio-card">
+        <div class="art-frame">
+          <Fragment set:html={item.vector} />
+        </div>
+        <div class="art-meta">
+          <p class="art-style">{item.specialty}</p>
+          <p class="art-desc">{item.desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</Layout>
