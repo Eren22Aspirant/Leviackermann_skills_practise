@@ -1,11 +1,9 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  // Replace 'your-github-username' and 'your-repo-name' with your actual GitHub details
-  site: 'https://github.io',
-  base: 'https://github.com/Eren22Aspirant/Leviackermann_skills_practise',
+  site: 'https://eren22aspirant.github.io',
+  base: '/Leviackermann_skills_practise',
+  trailingSlash: 'always', // <-- Forces consistent subfolder index routing
   integrations: [react()],
 });

@@ -87,19 +87,20 @@ import Layout from '../layouts/Layout.astro';
     </div>
 
     <div class="portal-grid">
-      <!-- Left Entrance Card Link: Studio Gallery -->
-      <a href="/gallery" class="portal-card">
-        <span class="portal-num">01 // VISUAL WORK</span>
-        <h2 class="portal-name">Tattoo Studio →</h2>
-        <p class="portal-desc">Explore our resident tattoo artists, healed blackwork portfolios, and open calendar booking logs.</p>
-      </a>
+  <!-- Left Entrance Card Link: Studio Gallery -->
+  <a href={`${import.meta.env.BASE_URL}gallery/`} class="portal-card">
+    <span class="portal-num">01 // VISUAL WORK</span>
+    <h2 class="portal-name">Tattoo Studio →</h2>
+    <p class="portal-desc">Explore our resident tattoo artists, healed blackwork portfolios, and open calendar booking logs.</p>
+  </a>
 
-      <!-- Right Entrance Card Link: Streetwear Shop -->
-      <a href="/shop" class="portal-card">
-        <span class="portal-num">02 // PREMIUM DROPS</span>
-        <h2 class="portal-name">Shop Apparel →</h2>
-        <p class="portal-desc">Browse our limited architectural garments, heavyweight fleece hoodies, and lifestyle drops.</p>
-      </a>
-    </div>
+  <!-- Right Entrance Card Link: Streetwear Shop -->
+  <a href={`${import.meta.env.BASE_URL}shop/`} class="portal-card">
+    <span class="portal-num">02 // PREMIUM DROPS</span>
+    <h2 class="portal-name">Shop Apparel →</h2>
+    <p class="portal-desc">Browse our limited architectural garments, heavyweight fleece hoodies, and lifestyle drops.</p>
+  </a>
+</div>
+
   </div>
 </Layout>
