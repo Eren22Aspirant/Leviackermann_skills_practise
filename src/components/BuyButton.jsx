@@ -1,12 +1,10 @@
 import { useState } from 'react';
 
 export default function BuyButton({ productName }) {
-  const [status, setStatus] = useState('idle'); // 'idle' | 'adding' | 'success'
+  const [status, setStatus] = useState('idle');
 
   const handleTrigger = () => {
     setStatus('adding');
-    
-    // Simulate real database checkout latency lag
     setTimeout(() => {
       setStatus('success');
       setTimeout(() => setStatus('idle'), 2000);
@@ -17,17 +15,24 @@ export default function BuyButton({ productName }) {
     <button 
       onClick={handleTrigger}
       disabled={status === 'adding'}
-      className={`w-full py-3 px-4 rounded text-xs font-bold uppercase tracking-widest transition-all duration-300 transform active:scale-[0.98] ${
-        status === 'success' 
-          ? 'bg-emerald-600 text-white' 
-          : status === 'adding'
-          ? 'bg-zinc-800 text-zinc-500 cursor-not-allowed'
-          : 'bg-white text-black hover:bg-zinc-200'
-      }`}
+      style={{
+        width: '100%',
+        padding: '12px 16px',
+        backgroundColor: status === 'success' ? '#059669' : status === 'adding' ? '#27272a' : '#ffffff',
+        color: status === 'success' || status === 'adding' ? '#ffffff' : '#000000',
+        fontSize: '12px',
+        fontWeight: '700',
+        textTransform: 'uppercase',
+        letterSpacing: '1px',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: status === 'adding' ? 'not-allowed' : 'pointer',
+        transition: 'all 0.3s ease'
+      }}
     >
       {status === 'idle' && `Add to Bag`}
       {status === 'adding' && `Securing Order...`}
-      {status === 'success' && `✓ Added Successfully`}
+      {status === 'success' && `✓ Added`}
     </button>
   );
 }
